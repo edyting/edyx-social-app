@@ -14,7 +14,7 @@ const Navbar = () => {
           </Link>
         </div>
         {/* // middle */}
-        <div className="hidden md:flex text-sm w-[50%]">
+        <div className="hidden md:flex text-sm w-[50%] items-center justify-between">
           {/* links */}
           <div className="flex gap-6 text-gray-600">
             <Link href="/" className="flex items-center gap-2">
@@ -47,7 +47,12 @@ const Navbar = () => {
               />
               <span>Stories</span>
             </Link>
-          </div>
+                </div>
+                {/* search */}
+                <div className="hidden lg:flex bg-slate-100 p-2 rounded-xl items-center ">
+                    <input type="text" placeholder="Search..." className=" bg-transparent outline-none" />
+                    <Image src="/search.png" alt='search' width={14} height={14}/>
+                </div>
         </div>
         {/* // right */}
         <div className="w-[30%] flex items-center justify-end gap-4 xl:gap-8">
@@ -70,24 +75,24 @@ const Navbar = () => {
                 <Image
                   src="/people.png"
                   alt="people"
-                  width={20}
-                  height={20}
+                  width={24}
+                  height={24}
                 />
               </div>
               <div className="cursor-pointer">
                 <Image
                   src="/messages.png"
                   alt="messages"
-                  width={20}
-                  height={20}
+                  width={24}
+                  height={24}
                 />
               </div>
               <div className="cursor-pointer">
                 <Image
                   src="/notifications.png"
                   alt="notifications"
-                  width={20}
-                  height={20}
+                  width={24}
+                  height={24}
                 />
                         </div>
                 <UserButton/>
