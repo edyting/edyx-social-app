@@ -2,6 +2,7 @@ import React from 'react'
 import MobileMenu from './MobileMenu';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ClerkLoaded, ClerkLoading, SignedOut, SignedIn, UserButton } from "@clerk/nextjs";
 
 const Navbar = () => {
     return (
@@ -50,6 +51,54 @@ const Navbar = () => {
         </div>
         {/* // right */}
         <div className="w-[30%] flex items-center justify-end gap-4 xl:gap-8">
+          {/* check if authentication is loading */}
+          <ClerkLoading>
+            {/* spinner from tw-elements.com */}
+            <div
+              className="inline-block bg-blue-600 h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
+              role="status"
+            >
+              <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+                Loading...
+              </span>
+            </div>
+          </ClerkLoading>
+          {/* check if loading is completed */}
+          <ClerkLoaded>
+            <SignedIn>
+              <div className="cursor-pointer">
+                <Image
+                  src="/people.png"
+                  alt="people"
+                  width={20}
+                  height={20}
+                />
+              </div>
+              <div className="cursor-pointer">
+                <Image
+                  src="/messages.png"
+                  alt="messages"
+                  width={20}
+                  height={20}
+                />
+              </div>
+              <div className="cursor-pointer">
+                <Image
+                  src="/notifications.png"
+                  alt="notifications"
+                  width={20}
+                  height={20}
+                />
+                        </div>
+                <UserButton/>
+            </SignedIn>
+                    <SignedOut>
+                        <div className="flex items-center gap-2 cursor-pointer text-sm">
+                            <Image src="/login.png" alt="login" width={20} height={20} />
+                            <Link href='/sign-in'>Login/Register</Link>
+                        </div>
+                    </SignedOut>
+          </ClerkLoaded>
           <MobileMenu />
         </div>
       </div>
